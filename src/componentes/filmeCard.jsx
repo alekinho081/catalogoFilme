@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const CardContainer = styled.div`
   background: #1a1a1a;
@@ -78,7 +79,8 @@ const FilmeCard = ({ filme }) => {
         <Rating>
           ⭐ <span>{filme.vote_average?.toFixed(1) || 'N/A'}</span>
         </Rating>
-        <DetailsButton>Ver Detalhes</DetailsButton>
+        <Link to={`/detalhes/${filme.id}`}><DetailsButton>Ver Detalhes</DetailsButton></Link>
+        
       </CardContent>
     </CardContainer>
   );

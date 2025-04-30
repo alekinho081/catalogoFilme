@@ -74,7 +74,6 @@ export const Rodape = () => {
               <h3>Navegação</h3>
               <FooterLink href="/">Início</FooterLink>
               <FooterLink href="/filmes">Filmes</FooterLink>
-              <FooterLink href="/generos">Gêneros</FooterLink>
             </FooterColumn>
             
             <FooterColumn>

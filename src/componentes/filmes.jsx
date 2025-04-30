@@ -32,7 +32,7 @@ const Filmes = () => {
 
     return (
         <div className="filmes-page">
-            <h1>Catálogo de Filmes</h1>
+            <h1>Filmes populares</h1>
             <FilmeLista filmes={movies} />
         </div>
     );

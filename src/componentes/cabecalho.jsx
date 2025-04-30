@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Popover from '@mui/material/Popover';
 
 const HeaderContainer = styled.header`
   background: linear-gradient(135deg, #f47521 0%, #e50914 100%);
@@ -95,28 +96,43 @@ const LoginButton = styled.button`
     color: #f47521;
   }
 `;
+let [open, setOpen] = (false)
 
 export const Cabecalho = () => {
-    return (
-        <HeaderContainer>
-          <HeaderContent>
-            <Logo>Catálogo<span>Filmes</span></Logo>
-            
-            <Nav>
-              <NavLink href="/">Início</NavLink>
-              <NavLink href="/filmes">Filmes</NavLink>
-              <NavLink href="/generos">Gêneros</NavLink>
-            </Nav>
-            
-            <UserSection>
-              <SearchButton>
-                <i className="fas fa-search"></i>
-              </SearchButton>
-              <LoginButton>Entrar</LoginButton>
-            </UserSection>
-          </HeaderContent>
-        </HeaderContainer>
-    )
+  return (
+    <HeaderContainer>
+      <HeaderContent>
+        <Logo>Catálogo<span>Filmes</span></Logo>
+
+        <Nav>
+          <NavLink href="/">Início</NavLink>
+          <NavLink href="/generos">Gêneros</NavLink>
+        </Nav>
+
+        <UserSection>
+          <SearchButton onClick={() => {if (open){ setOpen(true)}}}>
+            <i className="fas fa-search"></i>
+            <Popover
+            open={open}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            The content of the Popover.
+          </Popover>
+
+
+          </SearchButton>
+          
+        </UserSection>
+      </HeaderContent>
+    </HeaderContainer>
+  )
 }
 
 export default Cabecalho;
