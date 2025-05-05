@@ -99,8 +99,7 @@ export const Rodape = () => {
             <FooterColumn>
               <h3>Redes Sociais - Gabriel</h3>
               <SocialIcons>
-                <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/lino.s7/" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
               </SocialIcons>
             </FooterColumn>
 

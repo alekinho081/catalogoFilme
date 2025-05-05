@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Popover from '@mui/material/Popover';
-
 const HeaderContainer = styled.header`
   background: linear-gradient(135deg, #f47521 0%, #e50914 100%);
   padding: 1rem 2rem;
@@ -81,22 +79,7 @@ const SearchButton = styled.button`
   cursor: pointer;
 `;
 
-const LoginButton = styled.button`
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid white;
-  color: white;
-  padding: 0.5rem 1.2rem;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: white;
-    color: #f47521;
-  }
-`;
-let [open, setOpen] = (false)
+
 
 export const Cabecalho = () => {
   return (
@@ -110,23 +93,8 @@ export const Cabecalho = () => {
         </Nav>
 
         <UserSection>
-          <SearchButton onClick={() => {if (open){ setOpen(true)}}}>
+          <SearchButton >
             <i className="fas fa-search"></i>
-            <Popover
-            open={open}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-          >
-            The content of the Popover.
-          </Popover>
-
-
           </SearchButton>
           
         </UserSection>

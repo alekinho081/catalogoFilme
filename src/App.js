@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layout'
 import Home from './pages/Home.jsx'
-import Detalhes from './componentes/detalhes.jsx';
+import Detalhes from './pages/detalhes.jsx';
 import Generos from './componentes/generos.jsx';
 
 function App() {

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Detalhes = () => {
+ 
   const { id } = useParams();
   const [filme, setFilme] = useState(null);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
+  const [favoritos, setFavoritos] = useState(JSON.parse(localStorage.getItem('favoritos')) || []);
 
   useEffect(() => {
     const buscarDetalhes = async () => {
@@ -48,22 +51,57 @@ const Detalhes = () => {
             <span>⭐ {filme.vote_average.toFixed(1)}</span>
             <span>{new Date(filme.release_date).toLocaleDateString()}</span>
           </div>
-          <div style={{ margin: "15px 0" }}>
+          <div style={{ 
+            margin: "15px 0", 
+            display: "flex", 
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "10px"
+          }}>
             {filme.genres.map((genero) => (
-              <span
+              <div
                 key={genero.id}
                 style={{
                   background: "#e50914",
                   color: "white",
                   padding: "5px 10px",
                   borderRadius: "20px",
-                  marginRight: "10px",
                   fontSize: "14px",
+                  height: '28px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 {genero.name}
-              </span>
+              </div>
             ))}
+            
+            <FavoriteIcon 
+              sx={{
+                background: "#e50914",
+                color: "white",
+                padding: "6px",
+                borderRadius: "20px",
+                fontSize: "20px",
+                height: "38px",
+                width: "50px",
+                boxSizing: "border-box",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }} 
+              onClick={() => {
+                const novosFavoritos = [...favoritos, filme.id];
+                setFavoritos([...favoritos, novosFavoritos])
+                
+                localStorage.setItem('favoritos', JSON.stringify(favoritos))
+               
+                
+
+              }}
+            />
+
           </div>
           <p style={{ lineHeight: "1.6" }}>{filme.overview}</p>
         </div>
