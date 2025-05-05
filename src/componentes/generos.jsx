@@ -95,14 +95,14 @@ const genres = [
 ];
 
 const Generos = () => {
-  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [generoEscolhido, setGeneroEscolhido] = useState(null);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   // Buscar filmes por gênero
   useEffect(() => {
-    if (!selectedGenre) {
+    if (!generoEscolhido) {
       setMovies([]);
       return;
     }
@@ -111,7 +111,7 @@ const Generos = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=8b681afdd0f244adfc5679820f8b0c91&with_genres=${selectedGenre}&language=pt-BR`
+          `https://api.themoviedb.org/3/discover/movie?api_key=8b681afdd0f244adfc5679820f8b0c91&with_genres=${generoEscolhido}&language=pt-BR`
         );
         const data = await response.json();
         setMovies(data.results || []);
@@ -123,14 +123,14 @@ const Generos = () => {
     };
 
     fetchMoviesByGenre();
-  }, [selectedGenre]);
+  }, [generoEscolhido]);
 
-  const handleGenreClick = (genreId) => {
-    setSelectedGenre(genreId === selectedGenre ? null : genreId);
+  const handleGenreClick = (generoId) => {
+    setGeneroEscolhido(generoId === generoEscolhido ? null : generoId);
   };
 
   const handleMovieClick = (movieId) => {
-    navigate(`/movie/${movieId}`);
+    navigate(`/detalhes/${movieId}`);
   };
 
   return (
@@ -141,7 +141,7 @@ const Generos = () => {
         {genres.map((genre) => (
           <GenreButton
             key={genre.id}
-            active={selectedGenre === genre.id}
+            active={generoEscolhido === genre.id}
             onClick={() => handleGenreClick(genre.id)}
           >
             {genre.name}
@@ -151,10 +151,10 @@ const Generos = () => {
 
       {loading && <p>Carregando filmes...</p>}
 
-      {selectedGenre && !loading && (
+      {generoEscolhido && !loading && (
         <>
           <h2>
-            Filmes de {genres.find(g => g.id === selectedGenre)?.name}
+            Filmes de {genres.find(g => g.id === generoEscolhido)?.name}
             {movies.length > 0 && ` (${movies.length})`}
           </h2>
           

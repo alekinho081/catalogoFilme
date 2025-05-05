@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Detalhes = () => {
- 
   const { id } = useParams();
   const [filme, setFilme] = useState(null);
   const [carregando, setCarregando] = useState(true);
@@ -93,12 +92,11 @@ const Detalhes = () => {
               }} 
               onClick={() => {
                 const novosFavoritos = [...favoritos, filme.id];
-                setFavoritos([...favoritos, novosFavoritos])
-                
+                setFavoritos([novosFavoritos])
                 localStorage.setItem('favoritos', JSON.stringify(favoritos))
-               
-                
 
+                
+                      
               }}
             />
 
